@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { TaskContext } from "../../Context/TaskContext";
 import "../ToDoList/ToDoList.css";
 
@@ -15,7 +15,7 @@ const ToDoList = () => {
 
       const updatedTasks = [...tasks];
       const nowTask = updatedTasks[index];
-      updatedTasks[index].completed = !updatedTasks[index].completed;
+      nowTask.completed = !nowTask.completed;
 
       // Separar las tareas activas (completed = true) y desactivadas (completed = false)
       const activeTasks = updatedTasks.filter((task) => task && task.completed);
@@ -67,7 +67,8 @@ const ToDoList = () => {
               className={`d-flex justify-content-between align-items-center list-group-item list-group-item-action list-group-item-primary p-0 mb-1 ${
                 deletingIndex === index ? "slide-out" : ""
               } ${moveIndex === index ? "slide-out" : ""}
-               ${lastMoveIndex === task.id ? "slide-in" : ""}
+              ${lastMoveIndex === task.id ? "slide-in" : ""}
+              ${task.completed ? "isCompleted" : ""}
                 `}
               key={index}
             >
@@ -80,7 +81,10 @@ const ToDoList = () => {
                 value=""
                 id={index}
               />
-              <label className="form-check-label p-2 w-100 d-flex justify-content-center text-center" htmlFor={index}>
+              <label
+                className="form-check-label p-2 w-100 d-flex justify-content-center text-center"
+                htmlFor={index}
+              >
                 {task.title}
               </label>
               <button

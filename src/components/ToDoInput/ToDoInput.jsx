@@ -4,6 +4,7 @@ import { TaskContext } from "../../Context/TaskContext";
 const ToDoInput = () => {
   const { dispatch } = useContext(TaskContext);
   const refInputText = useRef();
+  const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
   const addTask = () => {
@@ -20,21 +21,27 @@ const ToDoInput = () => {
     setError(""); // Limpia el error después de agregar la tarea
   };
 
-   // Función para limpiar el error cuando el usuario hace clic en el input
-   const handleInputClick = () => {
+  // Función para limpiar el error cuando el usuario hace clic en el input
+  const handleInputClick = () => {
     if (error) setError(""); // Eliminar el error si el usuario empieza a escribir
   };
 
   return (
     <div className="inputAndButton d-flex justify-content-center gap-3">
       <input
-      style={error ? { color: "red" } : {}}
+        style={error ? { color: "red" } : {}}
         ref={refInputText}
         type="text"
         placeholder={error ? error : "Nueva tarea"}
         onClick={handleInputClick} // Limpiar error cuando se hace clic
+        onChange={(e) => setInputValue(e.target.value)}
       />
-      <button type="button" className="btn btn-success" disabled={!refInputText.current?.value} onClick={addTask}>
+      <button
+        type="button"
+        className="btn btn-success"
+        disabled={!inputValue}
+        onClick={addTask}
+      >
         Agregar Tarea
       </button>
     </div>
