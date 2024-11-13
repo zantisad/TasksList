@@ -1,0 +1,25 @@
+.inputTask {
+    border: 1px solid gray;
+    padding-inline: .3rem;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Asegura que las notificaciones se apilen */
+.Toastify__toast-container {
+    z-index: 9999; /* Asegura que el contenedor tenga un alto z-index para que las notificaciones se superpongan */
+  }
+  
+  .Toastify__toast {
+    margin-bottom: 10px; /* Controla el espacio entre las notificaciones */
+  }
+
+  .form-select-priority {
+    outline: none;
+    border: none; 
+    border-bottom: 1px solid gray;
+    border-radius: 5px;
+    width: 100px;
+    font-size: 1rem;
+    padding: 5px 4px 2px 4px;
+    cursor: pointer;
+  }
