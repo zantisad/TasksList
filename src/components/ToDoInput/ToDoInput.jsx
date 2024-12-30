@@ -52,7 +52,7 @@ const ToDoInput = () => {
   };
 
   return (
-    <div className="inputAndButton d-flex justify-content-center gap-3">
+    <div className="inputAndButton d-flex justify-content-center gap-3 mt-3">
       <div className="info-addTask">
         <input
           className="inputTask"
@@ -82,7 +82,7 @@ const ToDoInput = () => {
       <div className="button-addTask">
         <button
           type="button"
-          className="btn btn-success"
+          className="buttonAdd btn btn-success"
           disabled={!inputValue}
           onClick={addTask}
         >
